@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Número de Taladros en Minería</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Calculadora de Número de Taladros en Minería</h1>
+    <form>
+        <label for="rqd">RQD (Rock Quality Designation):</label>
+        <input type="number" id="rqd" value="0">
+
+        <label for="sigma">σ (Stress):</label>
+        <input type="number" id="sigma" value="0">
+
+        <label for="factor-safety">F (Factor de seguridad):</label>
+        <input type="number" id="factor-safety" value="0">
+
+        <label for="diameter">DP (Diámetro del taladro):</label>
+        <input type="number" id="diameter" value="0">
+
+        <label for="burden">B (Carga):</label>
+        <input type="number" id="burden" value="0">
+
+        <label for="radius">r (Radio del taladro):</label>
+        <input type="number" id="radius" value="0">
+
+        <button type="button" onclick="calculateDrills()">Calcular número de taladros</button>
+
+        <p id="result">Número de taladros: <span id="drills"></span></p>
+         
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        
+        form {
+            width: 50%;
+            margin: 40px auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+        
+        input[type="number"] {
+            width: 100%;
+            height: 30px;
+            margin-bottom: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+        }
+        
+        button[type="button"] {
+            width: 100%;
+            height: 30px;
+            margin-bottom: 20px;
+            padding: 10px;
+            border: none;
+            border-radius: 10px;
+            background-color: #4CAF50;
+            color: #fff;
+            cursor: pointer;
+        }
+        
+        button[type="button"]:hover {
+            background-color: #3e8e41;
+        }
+        
+        #result {
+            font-size: 24px;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+        
+        #drills {
+            color: #00698f;
+        }
+
+
+
+
+
+    </form>
+
+    <script src="script.js"></script>
+
+    function calculateDrills() {
+        const rqd = document.getElementById("rqd").value;
+        const sigma = document.getElementById("sigma").value;
+        const factorSafety = document.getElementById("factor-safety").value;
+        const diameter = document.getElementById("diameter").value;
+        const burden = document.getElementById("burden").value;
+        const radius = document.getElementById("radius").value;
+    
+        const formula = (rqd * sigma * factorSafety * diameter * burden) / (radius * radius);
+        const drills = Math.ceil(formula);
+    
+        document.getElementById("drills").innerHTML = drills;
+    }
+</body>
+</html>
